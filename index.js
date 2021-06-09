@@ -1,5 +1,7 @@
 /*REMEMBER TO RETURN ALL OF THE ANSWERS ON THESE TASKS, IF YOU DON'T, THE AUTOGRADER WILL NOT WORK*/
 
+const { ESLint } = require("eslint");
+
 /* 👀 This is your data ⬇ */
 const originalFlavors = [
     "Banana Nut Fudge",
@@ -45,11 +47,12 @@ Use the copy function below to do the following:
     2. Return a copy of the received array  
 */
 
-function copy(/*your code here*/){
-    /*your code here*/
+function copy(OriginalFlavors){
+    var copyFlavors = OriginalFlavors;
+    return(copyFlavors);
 }    
 
-
+// console.log(copy(originalFlavors));
 
 
 
@@ -64,9 +67,21 @@ For Example: is31Flavors(originalFlavors) will return true if your code is worki
 */
 
 
-function is31Flavors(/*your code here*/){
-   /*your code here*/
+function is31Flavors(myFlavors)
+{
+   var arr1length = myFlavors.length;
+   
+   if (arr1length  == 31 )  {
+       return true;
+   } else {
+       return false;
+   }
 }
+
+// console.log(is31Flavors(originalFlavors));
+
+   
+   
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Corporate has come to you with an idea for a new flavor: Rainbow Sherbert! They think this will be a game changer. You need to modify the array to include this flavor. 
@@ -77,14 +92,15 @@ Use the addFlavor function below to do the following:
     3. The function adds the passed flavor to the front of the passed array
     4. The function should return the resulting array
 
-    For example: addFlavor(originalFlavors, "Rainbow Sherbert") should return the array ["Rainbow Sherbert", "Banana Nut Fudge",..."Vanilla Burnt Almond"]
+    For example: addFlavor(inbooriginalFlavors, "Raw Sherbert") should return the array ["Rainbow Sherbert", "Banana Nut Fudge",..."Vanilla Burnt Almond"]
 */
 
 
-function addFlavor(/*your code here*/){
-   /*your code here*/
+function addFlavor(inputarray,newflavor){
+   inputarray.unshift(newflavor);
+   return inputarray;
 }
-
+//  console.log(addFlavor(originalFlavors, "Raw Sherbert"));
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Houston, we have a problem! There are now 32 flavors in the originalFlavors array! Your task is to remove an item from the end of the array. 
@@ -97,10 +113,11 @@ Use the removeLastFlavor function below to do the following:
     For example: running removeLastFlavor(originalFlavors) would return ["Rainbow Sherbert", "Banana Nut Fudge",..."Vanilla"]
 */
 
-function removeLastFlavor(/*your code here*/){
-   /*your code here*/
+function removeLastFlavor(inputarray){
+    inputarray.pop();
+    return inputarray;
 }
-
+//   console.log(removeLastFlavor(originalFlavors));
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -114,10 +131,12 @@ Use the getFlavorByIndex function below to do the following:
     For example: running getFlavorByIndex(originalFlavors, 2) would return "Black Walnut", assuming Rainbow Sherbert has been added successfully
 */
 
-function getFlavorByIndex(/*your code here*/){
-    /*your code here*/
+function getFlavorByIndex(inputarray,flavornumber){
+    return inputarray[flavornumber];
 }
 
+// console.log(getFlavorByIndex(originalFlavors,2));
+// console.log(getFlavorByIndex(originalFlavors,0));
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 As corporate wants to add more and more flavors to their lineup, they've realized that they need to remove flavors based on flavor name, 
@@ -134,11 +153,13 @@ Use the removeFlavorByName function below to do the following:
     HINT: You can use .splice() for this
 */
 
-function removeFlavorByName(/*your code here*/){
-    /*your code here*/
+function removeFlavorByName(inputarray,flavorName){
+    var indexNumber = inputarray.indexOf(flavorName);
+    inputarray.splice(indexNumber,1);
+    return inputarray;
 }
 
-
+// console.log(removeFlavorByName(originalFlavors, "Rocky Road"));
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 7: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 July 7th is "World Chocolate Day" and Baskin Robins wants to create promotional materials highlighting all of their chocolate flavors. 
@@ -160,9 +181,21 @@ Use the filterByWord function below to do the following:
     DO NOT USE ADVANCED ARRAY METHODS (i.e. .filter) to solve this problem. 
 */
 
-function filterByWord(/*your code here*/){
-    /*your code here*/
+function filterByWord(inputarray, filter){
+    // make an empty array so that we can push our flavors to it 
+    var filteredFlavours = []; //empty array
+    for(let i = 0; i < inputarray.length; i++){
+        // if the index contains the string 
+        if(inputarray[i].includes(filter)){
+            // push that index to the new array
+            filteredFlavours.push(inputarray[i]); 
+        }
+    }
+return filteredFlavours; 
 }
+
+console.log(filterByWord(originalFlavors, "Lemon"))
+// console.log('task 7', filterByworld(originalFlavors, 'Chocolate'));
 
 
 /* 💪💪💪💪💪🧁🍦🍨 STRETCH 🍨🍦🍫💪💪💪💪💪*/ 
